@@ -17,15 +17,18 @@ export default {
             user : []
         }
     },
+    mounted() {
+        console.log("login mounted")
+    },
     methods:{
     enregistrer(){
         let data = new FormData();
         data.append("username", this.username);
         data.append("password",this. password);
-        axios.post("http://127.0.0.1:8000/api/login/",data)
+        axios.post(this.url+"/login/",data)
         .then((response)=>{
-            this.user = response.data
-            console.log(this.user)
+            this.$store.state.user = response.data
+            console.log(this.$store.state.user)
         })
         .catch((error)=>{
             console.log(error)
