@@ -8,19 +8,21 @@
 <script>
 import Footer from './components/footer.vue'
 import Header from './components/header.vue'
+import axios from "axios"
 export default {
   components:{
     Header,
-    Footer
+    Footer,
   },
   mounted() {
+   
     console.log(this.$store.user)
     var user = JSON.parse(localStorage.getItem('user'))
     if(user){
       this.$store.state.user = user;
     }
     console.log(this.$store.state.user)
-      },
+  },
   watch:{
     "$store.state.user":{
       deep:true,
@@ -31,11 +33,22 @@ export default {
           localStorage.removeItem('user')
         }
       }
+    }
+      
     },
-    
-  }
 
-};
+    computed:{
+             headers(){
+            return{
+                 headers:{
+                     "Content-Type":"multipart/form-data"
+
+                 }
+             }
+         }
+     }
+  
+  };
 </script>
 
 <style src="./assets/styles.css">

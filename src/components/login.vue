@@ -28,6 +28,7 @@ export default {
         axios.post(this.url+"/login/",data)
         .then((response)=>{
             this.$store.state.user = response.data
+            this.$router.push('/')
             console.log(this.$store.state.user)
         })
         .catch((error)=>{

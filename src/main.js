@@ -23,7 +23,18 @@ Vue.mixin({
           console.log(error)
         }
       })
-    }
+    },
+    is_admin(){
+      return this.$store.state.is_admin
+    },
+    is_client(){
+      return this.$store.state.adresse
+
+    },
+    is_bibliothecaire(){
+      return this.$store.state.matricule
+
+    },
   },
   computed:{
     url(){
