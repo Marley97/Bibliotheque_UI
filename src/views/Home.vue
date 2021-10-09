@@ -17,6 +17,7 @@
 import axios from 'axios'
 import Aside from '../components/mini_header.vue'
 import Search from '../components/search.vue'
+
 export default {
     components: {
         Aside,
