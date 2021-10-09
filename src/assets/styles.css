@@ -1,0 +1,272 @@
+body{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+.wrapper{
+	padding: 10px;
+	background: #f0f0f0;
+}
+.row{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 70px;
+}
+.header{
+	background: #fff;
+	border-radius: 20px 20px 0 0;
+}
+.logo{
+	width: 160px;
+}
+input[type='search']{
+	border: 1px solid #43c5ff;
+	outline: none;
+	height: 30px;
+	border-radius: 20px 0 0 20px;
+	width: 270px;
+	margin-right: -5px;
+	padding: 0 0 1px 15px;
+}
+button{
+	height: 30px;
+	background: #43c5ff;
+	border-radius: 0 20px 20px 0;
+	outline: none;
+	border: 1px solid #43c5ff;
+}
+.fa-search{
+	color: whitesmoke;
+	padding: 0 5px;
+}
+.right{
+	display: inline-block;
+}
+.right ul{
+	list-style: none;
+	text-align: left;
+	display: inline-block;
+
+}
+.right ul li{
+	display: inline-block;
+	list-style-type: none;	
+}
+.right ul li a{
+	color:#43c5ff;
+	padding: 3px;
+}
+.fa-shopping-cart{
+	color: #43c5ff;
+}
+.fa-download{
+	color:#43c5ff;
+	margin-left: 60px;
+}
+.nav span{
+	padding: 10px 15px;
+}
+.nav span:hover{
+	background-color: black;
+	text-decoration: underline;
+}
+.nav{
+	background: #43c5ff;
+	color: whitesmoke;
+	padding: 12px 0;
+}
+.btn-link{
+	display: inline-block;
+	background-color:#43c5ff;
+	color:white;
+	text-decoration: none;
+	border: 1px solid #43c5ff;
+	border-radius: 20px 20px 20px 20px;
+	padding: 10px 28px;
+	margin-top: 15px;
+}
+.category{
+	background-color: #43c5ff;
+	border-radius: 0px 0px 0px 0px;
+	position: relative;
+	padding: 30px 0 10px;
+}
+.card{
+	width: 150px;
+	background-color: white;
+	border-radius: 10px;
+	border:8px solid white;
+
+}
+.card img {
+  opacity: 0.5;
+}
+.card-img{
+	width: 100%
+
+}
+.card-img:hover{
+	bottom: -50px;
+	opacity: 1;
+
+}
+.card-text{
+	text-align: center;
+	color:#43c5ff; 
+}
+.title{
+	position: absolute;
+	left: 50%;
+	top: -40px;
+	transform: translateX(-50%);
+	background-color: #fff;
+	border-radius: 5px;
+	padding: 10px 18px;
+}
+.formulaire{
+	height: 70vh;
+	background-color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.formulaire .row{
+	display: flex;
+
+}
+.forms{
+	flex-basis: 40%;
+}
+.col-25, .col-75{
+	flex-basis: 50%;
+	display: block;
+}
+.col-25 label, .col-75 input{
+	display: block;
+	width: 100%;
+}
+input[type=text]{
+	  padding: 8px 16px;
+	  margin: 8px 0;
+	  box-sizing: border-box;/*pour n'est pas ajouter le padding sur le width*/
+}
+input[type=email]{
+	padding:8px 16px;
+	margin:8px 0px;
+	box-sizing: border-box;
+}
+input[type=password]{
+	padding:8px 16px;
+	margin:8px 0px;
+	box-sizing: border-box;
+}
+.text{
+	text-align: center;
+}
+input[type=submit]{
+	  background-color:#43c5ff ;
+	  color: white;
+	  border: none;
+	  padding: 16px 32px;
+	  text-decoration: none;
+	 
+
+}
+input[type=submit]:hover{
+	background-color:#4CAF50 ;
+	
+}
+.footer-dark {
+  padding:50px 0;
+  color:#f0f9ff;
+  background-color:#282d32;
+}
+
+.footer-dark h3 {
+  margin-top:0;
+  margin-bottom:12px;
+  font-weight:bold;
+  font-size:16px;
+}
+
+.footer-dark ul {
+  padding:0;
+  list-style:none;
+  line-height:1.6;
+  font-size:14px;
+  margin-bottom:0;
+}
+
+.footer-dark ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.6;
+}
+
+.footer-dark ul a:hover {
+  opacity:0.8;
+}
+
+@media (max-width:767px) {
+  .footer-dark .item:not(.social) {
+    text-align:center;
+    padding-bottom:20px;
+  }
+}
+
+.footer-dark .item.text {
+  margin-bottom:36px;
+}
+
+@media (max-width:767px) {
+  .footer-dark .item.text {
+    margin-bottom:0;
+  }
+}
+
+.footer-dark .item.text p {
+  opacity:0.6;
+  margin-bottom:0;
+}
+
+.footer-dark .item.social {
+  text-align:center;
+}
+
+@media (max-width:991px) {
+  .footer-dark .item.social {
+    text-align:center;
+    margin-top:20px;
+  }
+}
+
+.footer-dark .item.social > a {
+  font-size:20px;
+  width:36px;
+  height:36px;
+  line-height:36px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  box-shadow:0 0 0 1px rgba(255,255,255,0.4);
+  margin:0 8px;
+  color:#fff;
+  opacity:0.75;
+}
+
+.footer-dark .item.social > a:hover {
+  opacity:0.9;
+}
+
+.footer-dark .copyright {
+  text-align:center;
+  padding-top:24px;
+  opacity:0.3;
+  font-size:13px;
+  margin-bottom:0;
+}
+
+
+
