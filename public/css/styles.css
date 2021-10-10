@@ -18,8 +18,17 @@ body{
 	background: #fff;
 	border-radius: 20px 20px 0 0;
 }
+.header .row {
+	padding: 15px 0;
+}
 .logo{
 	width: 160px;
+}
+.form{
+	height: 30px;
+	min-height: 30px;
+	box-sizing: border-box;
+	display: flex;
 }
 input[type='search']{
 	border: 1px solid #43c5ff;
@@ -30,33 +39,34 @@ input[type='search']{
 	margin-right: -5px;
 	padding: 0 0 1px 15px;
 }
-button{
+button[type='search']{
 	height: 30px;
 	background: #43c5ff;
 	border-radius: 0 20px 20px 0;
 	outline: none;
 	border: 1px solid #43c5ff;
 }
-.fa-search{
-	color: whitesmoke;
+.mdi-magnify{
+	color: white;
 	padding: 0 5px;
+	font-size: 20px;
 }
 .right{
-	display: inline-block;
+    display: flex;
 }
-.right ul{
-	list-style: none;
-	text-align: left;
-	display: inline-block;
-
+.right li{
+    display: inline-block;
+    list-style: none;
+    text-align: right;
+	cursor: pointer;
 }
-.right ul li{
-	display: inline-block;
-	list-style-type: none;	
+.right li:last-child{
+    border-right: none;
+    padding-right: 0;
 }
-.right ul li a{
-	color:#43c5ff;
-	padding: 3px;
+.right a{
+    color: #43c5ff;
+    text-decoration: none;
 }
 .fa-shopping-cart{
 	color: #43c5ff;
@@ -65,17 +75,21 @@ button{
 	color:#43c5ff;
 	margin-left: 60px;
 }
-.nav span{
-	padding: 10px 15px;
-}
-.nav span:hover{
-	background-color: black;
-	text-decoration: underline;
-}
 .nav{
 	background: #43c5ff;
 	color: whitesmoke;
-	padding: 12px 0;
+	padding: 15px 0;
+}
+.links{
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 20px;
+    transition: all .3s ease-in;
+    border-radius: 20px;
+}
+.links.active, .links:hover{
+    background: white;
+    color: #43c5ff;
 }
 .btn-link{
 	display: inline-block;
@@ -147,36 +161,8 @@ button{
 	display: block;
 	width: 100%;
 }
-input[type=text]{
-	  padding: 8px 16px;
-	  margin: 8px 0;
-	  box-sizing: border-box;/*pour n'est pas ajouter le padding sur le width*/
-}
-input[type=email]{
-	padding:8px 16px;
-	margin:8px 0px;
-	box-sizing: border-box;
-}
-input[type=password]{
-	padding:8px 16px;
-	margin:8px 0px;
-	box-sizing: border-box;
-}
 .text{
 	text-align: center;
-}
-input[type=submit]{
-	  background-color:#43c5ff ;
-	  color: white;
-	  border: none;
-	  padding: 16px 32px;
-	  text-decoration: none;
-	 
-
-}
-input[type=submit]:hover{
-	background-color:#4CAF50 ;
-	
 }
 .footer-dark {
   padding:50px 0;

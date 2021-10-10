@@ -1,18 +1,27 @@
 <template>
   <div id ="app">
-    <Header/>
-    <router-view></router-view>
-    <Footer/>
+    <div class="wrapper" v-if="$store.state.user">
+      <Header/>
+      <div class="byose">
+        <router-view></router-view>
+      </div>
+      <Footer/>
+    </div>
+    <div v-else>
+      <Login />
+    </div>
   </div>
 </template>
 <script>
 import Footer from './components/footer.vue'
 import Header from './components/header.vue'
+import Login from './components/login.vue'
 import axios from "axios"
 export default {
   components:{
     Header,
     Footer,
+    Login
   },
   mounted() {
    
@@ -51,5 +60,8 @@ export default {
   };
 </script>
 
-<style src="./assets/styles.css">
+<style scoped>
+.byose {
+  min-height: calc(100vh - 397.27px);
+}
 </style>

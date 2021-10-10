@@ -1,42 +1,47 @@
 <template>
     <div>
-       <div class="wrapper">
+       <div class="header-wrapper">
 			<div class="header">
-				<div class="row">
+				<div class="row h-row">
 					<img class="logo" src="../assets/logo1.png">
-					<form @sumit.prevent="rechercher">
-						<input type="search" v-model="search" name="" placeholder="search by book name">
-						<button type="search" @click.prevent="rechercher"><i class="fa fa-search"></i></button>
+					<form class="form" @sumit.prevent="rechercher">
+						<input type="search" name="" placeholder="search by book name">
+						<button type="search" @click.prevent="rechercher"><i class="mdi mdi-magnify"></i></button>
 					</form>
 					<div class="right">
-						<i class="fa fa-shopping-cart"></i>
-						<i class="fa fa-download"></i>
-						<ul>
-							<div v-if="this.$store.state.user">
+						<div class="cart-logout" v-if="this.$store.state.user">
+							<div class="cart-area">
+								<router-link to="/cart">
+									<i class="mdi mdi-cart" ></i>
+									<span class="counter">{{$store.state.cart.length}}</span>
+								</router-link>
+								
+							</div>
+								<hr class="spacer">
+							<li><a >Wish List</a></li>
+								<hr class="spacer">
 							<li><a @click="logout">logout</a></li>
-							<li><a @click="goto">cart <span class="panier">{{$store.state.cart.length}}</span></a></li>
-							</div>
-							<div v-else>
-								<li><a >Wish List</a></li>
-								<li><a >Log In</a></li>
-								<li><a >Sign Up</a></li>
-							</div>
-						</ul>
+						</div>
+						<div class="cart-logout" v-else>
+							<li><a >Log In</a></li>
+								<hr class="spacer">
+							<li><a >Sign Up</a></li>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="nav">
 				<div class="row">
-					<span>Home</span>
-					<span>All Books</span>
-					<span>Category</span>
-					<span>Writer</span>
-					<span>Publisher</span>
-					<span>Gallery</span>
-					<span>PDF Books</span>
-					<span>Blog</span>
-					<span>Account</span>
-					<span>Contact</span>
+					<span><router-link to="/" active-class="active" exact class="links">Home</router-link></span>
+                    <span><router-link to="/livre" active-class="active" exact class="links">All Books</router-link></span>
+                    <span><router-link to="/categorie" active-class="active" exact class="links">Category</router-link></span>
+                    <span><router-link to="" class="links">Writer</router-link></span>
+                    <span><router-link to="" class="links">Publisher</router-link></span>
+                    <span><router-link to="" class="links">Gallery</router-link></span>
+                    <span><router-link to="" class="links">PDF Books</router-link></span>
+                    <span><router-link to="" class="links">Blog</router-link></span>
+                    <span><router-link to="" class="links">About</router-link></span>
+                    <span><router-link to="" class="links">Contact</router-link></span>
 				</div>
 			</div> 
             </div>		
@@ -55,10 +60,6 @@ export default {
 		logout(){
 			localStorage.removeItem("user")
 			this.$store.state.user = null
-			this.$router.push('/login')
-		},
-		goto(){
-			this.$router.push("/cart")
 		},
 		rechercher(){
 			axios.get(this.url+'/livre/?titre='+this.search+'',this.headers)
@@ -88,5 +89,35 @@ export default {
 	background:red;
 	border-radius:10px;
 }
-    
+.cart-logout {
+	display: flex;
+	align-items: center;
+}
+.spacer {
+	border: none;
+	width: 1px;
+	height: 100%;
+	background: #ccc;
+	margin: 0px 15px;
+}
+.cart-area {
+	position: relative;
+}
+.mdi-cart {
+	font-size: 24px;
+	cursor: pointer;
+	color: #222;
+}
+.counter {
+	position: absolute;
+	display: inline-block;
+	top: -5px;
+	left: 67%;
+	font-weight: 500;
+	font-size: 14px;
+	background: #FF0B2A;
+	color: white;
+	border-radius: 50%;
+	padding: 0px 4px;
+}
 </style>
