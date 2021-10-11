@@ -1,3 +1,6 @@
+.small-container {
+    padding: 30px 80px;
+}
 table{
     width: 100%;
     border-collapse: collapse;
@@ -33,7 +36,7 @@ td img{
 }
 .total-price table{
     width: 100%;
-    border-top: 3px solid coral;
+    border-top: 3px solid #43c5ff;
     max-width: 350px;
 }
 td:last-child, th:last-child{
