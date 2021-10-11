@@ -13,6 +13,7 @@ body{
 	justify-content: space-between;
 	align-items: center;
 	margin: 0 70px;
+	flex-wrap: wrap;
 }
 .header{
 	background: #fff;
@@ -102,24 +103,26 @@ button[type='search']{
 	margin-top: 15px;
 }
 .category{
-	background-color: #43c5ff;
+	/* background-color: #43c5ff; */
 	border-radius: 0px 0px 0px 0px;
 	position: relative;
-	padding: 30px 0 10px;
+	padding: 30px 0;
 }
 .card{
-	width: 150px;
-	background-color: white;
+	width: 20%;
+	padding: 0px 8px;
+}
+.card-inner {
+	background: white;
 	border-radius: 10px;
-	border:8px solid white;
-
+	padding-bottom: 5px;
 }
 .card img {
   opacity: 0.5;
 }
 .card-img{
-	width: 100%
-
+	width: 100%;
+	height: 250px;
 }
 .card-img:hover{
 	bottom: -50px;
