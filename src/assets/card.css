@@ -3,10 +3,17 @@ body{
 }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  width: 500px;
-  margin: auto;
+  width: 600px;
   text-align: center;
   font-family: arial;
+  display: flex;
+  margin: 30px auto;
+}
+
+.card img {
+  width: 350px;
+  height: auto;
+  margin-right: 10px;
 }
 
 .price {
