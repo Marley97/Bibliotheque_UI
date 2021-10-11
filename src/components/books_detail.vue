@@ -46,6 +46,9 @@ export default {
             this.total=this.quantite*prix
         },
         Cart(){
+            if(this.$store.state.user.length === 0){
+                this.$router.push('/login')
+            }else{
             let id = -1
             for(let i = 0;i<this.$store.state.cart.length;i++){
                 if(this.$store.state.cart[i].livres.id===this.livre.id){
@@ -61,8 +64,26 @@ export default {
                 "quantite":this.quantite,
                 "prix":this.total
             })
+
+                axios.post(this.url+'/http://127.0.0.1:8000/api/panier/',
+                        {
+                        "client":this.$store.state.user.id,
+                        "livres":this.livre,
+                        "quantite":this.quantite,
+                        "prix":this.total,
+                        "paye":false
+                        }
+                    ,this.headers)
+                .then((response)=>{
+                    console.log(success)
+                })
+                .catch((error)=>{
+                    console.log(error)
+                })
+
             }
             this.$router.push('/vendu')
+        }
         }
     }
     

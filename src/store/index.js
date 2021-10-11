@@ -9,7 +9,7 @@ export default new Vuex.Store({
     categorie: [],
     livre:[],
     cart:[],
-    search:[],
+    search:"",
     url: "http://127.0.0.1:8000/api"
   },
   mutations: {

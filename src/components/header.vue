@@ -10,22 +10,18 @@
 					</form>
 					<div class="right">
 						<div class="cart-logout" v-if="this.$store.state.user">
-							<div class="cart-area">
+							<div style="margin-right: 10px;" class="cart-area">
 								<router-link to="/cart">
 									<i class="mdi mdi-cart" ></i>
 									<span class="counter">{{$store.state.cart.length}}</span>
 								</router-link>
 								
 							</div>
-								<hr class="spacer">
-							<li><a >Wish List</a></li>
-								<hr class="spacer">
-							<li><a @click="logout">logout</a></li>
-						</div>
-						<div class="cart-logout" v-else>
-							<li><a >Log In</a></li>
-								<hr class="spacer">
-							<li><a >Sign Up</a></li>
+							<li v-if="$store.state.user.length!=0"><a @click="logout">logout</a></li>
+							<div v-else>
+								<li style="margin-right: 10px;"><a @click="$router.push('/register')">Register</a></li>
+								<li ><a @click="$router.push('/login')">   Login</a></li>
+							</div>
 						</div>
 					</div>
 				</div>

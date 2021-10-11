@@ -36,6 +36,15 @@ Vue.mixin({
       return this.$store.state.matricule
 
     },
+    fetchLivre(){
+        axios.get(this.url+'/livre/',this.headers)
+        .then((response)=>{
+            this.$store.state.livre=response.data
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    },
   },
   computed:{
     url(){

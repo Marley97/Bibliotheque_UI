@@ -43,14 +43,12 @@ export default {
   },
    mounted() {
         this.fetchLivre() 
-        this.$store.state.search =null
    },
    methods: {
     fetchLivre(){
         axios.get(this.url+'/livre/',this.headers)
         .then((response)=>{
             this.$store.state.livre=response.data
-            console.log(response.data)
         })
         .catch((error)=>{
             console.log(error)

@@ -1,132 +1,33 @@
 <template >
     <div>
-        <div class="form-wrapper">
+        <div class="category">
             <div class="row">
-                <div class="col-3">
-                    <div class="form-group">
-                        <label for="">ISBN</label>
-                        <input v-model="isbn" type="text" name=""  />
-                    </div>
-                    <div class="form-group">
-                        <label for="">Titre</label>
-                        <input v-model="titre" type="text" name=""  />
-                    </div>
-                    <div class="form-group">
-                        <label for="">Auteur</label>
-                        <input v-model="auteur" type="text" name=""  />
-                    </div>
-                    <div class="form-group">
-                        <label for="">Langue</label>
-                        <input v-model="langue" type="text" name=""  />
-                    </div>
-                </div>
-
-                <div class="col-3">
-                    <div class="form-group">
-                        <label for="">Description</label>
-                        <textarea v-model="description"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Annee Publication</label>
-                        <input v-model="annee_publication" type="date" name=""  />
-                    </div>
-                    <div class="form-group">
-                        <label for="">Nombre Exemplaire</label>
-                        <input v-model="nombre_exemplaire" type="number" name=""  />
-                    </div>
-                </div>
-
-                <div class="col-3">
-                    <div class="form-group">
-                        <label for="">Couverture</label>
-                        <input @change="(e)=>couv(e)" type="file" name=""  />
-                    </div>
-                    <div class="form-group">
-                        <label for="">Pdf</label>
-                        <input @change="(e)=>pdff(e)" type="file" name=""  />
-                    </div>
-                    <div class="form-group">
-                        <label for="">Prix</label>
-                        <input v-model="prix" type="text" name="" placeholder="" />
-                    </div>
-                    <div class="form-group">
-                        <label>Categorie</label>
-                        <select v-model="categorie">
-                            <option>.........................</option>
-                            <option v-for = "categorie in $store.state.categorie " :key="categorie.id" :value="categorie.id">{{categorie.nom}}</option>
-                        </select>
-                    </div>
+                <div class="card" v-for = "item in $store.state.livre" :key="item.id" @click="bookroter(item)">
+                    <img class="card-img" :src="item.couverture">
+                    <p class="card-text">{{item.titre}}</p>
                 </div>
             </div>
-
-            <div class="btn-wrapper">
-                <button class="btn btn-submit" v-on:click="ajouter">Enregistrer</button>
-            </div>
-        </div>  
+        </div>
     </div>
 </template>
 <script>
 import axios from "axios"
 export default {
-    data(){
-        return{
-        isbn:"",
-        titre:"",
-        couverture:null,
-        pdf:null,
-        annee_publication:"",
-        langue:"",
-        nombre_exemplaire:"",
-        prix:"",
-        categorie:"",
-        auteur:"",
-        description:"",
-
-    }
-    },
     mounted(){
-        this.fetchData()
+        this.fetchLivre()
         
     },
     methods:{
-        couv(e){
-            this.couverture=e.target.files[0]
-        },
-        pdff(e){
-            this.pdf=e.target.files[0]
-        },
-    fetchData(){
-        axios.get(this.url+'/categorie/',this.headers)
+        
+            fetchLivre(){
+        axios.get(this.url+'/livre/',this.headers)
         .then((response)=>{
-            this.$store.state.categorie=response.data
-            console.log(response.data)
-            console.log(this.$store.state.categorie)
+            this.$store.state.livre=response.data
         })
         .catch((error)=>{
             console.log(error)
         })
-        }, 
-    ajouter(){
-        let data=new FormData()
-        data.append("isbn",this.isbn);
-        data.append("titre",this.titre);
-        data.append("couverture",this.couverture);
-        data.append("pdf",this.pdf);
-        data.append("annee_publication",this.annee_publication);
-        data.append("langue",this.langue);
-        data.append("nombre_exemplaire",this.nombre_exemplaire);
-        data.append("prix",this.prix);
-        data.append("categorie",this.categorie);
-        data.append("auteur",this.auteur);
-        data.append("description",this.description);
-        axios.post("http://127.0.0.1:8000/api/livre/",data,this.headers)
-        .then((response)=>{
-            console.log(response)
-        })
-        .catch((error)=>{
-            console.log(error)
-        })
-    }
+    },
      },
         computed:{
              headers(){
