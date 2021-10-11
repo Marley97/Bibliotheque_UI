@@ -1,27 +1,27 @@
 <template>
   <div id ="app">
-    <div class="wrapper" v-if="$store.state.user">
+    <div class="wrapper">
       <Header/>
       <div class="byose">
         <router-view></router-view>
       </div>
       <Footer/>
     </div>
-    <div v-else>
+    <!-- <div v-else>
       <Login />
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
 import Footer from './components/footer.vue'
 import Header from './components/header.vue'
-import Login from './components/login.vue'
+// import Login from './components/login.vue'
 import axios from "axios"
 export default {
   components:{
     Header,
     Footer,
-    Login
+    // Login
   },
   mounted() {
    
