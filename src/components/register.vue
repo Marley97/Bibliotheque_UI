@@ -36,11 +36,11 @@
                                 <label>Adresse</label>
                                 <input type = "text" v-model ="adresse" name ="">
                             </div>
-                            <div class='form-group'>
-                                <label>Telephone</label>
-                                <input type = "text" v-model ="telephone" name ="">
-                            </div>
                         </div>
+                    </div>
+                    <div class='form-group tel'>
+                        <label>Telephone</label>
+                        <input type = "text" v-model ="telephone" name ="">
                     </div>
                     <button @click ="enregistrer">Enregistre</button>
                     <div class="link">
@@ -140,7 +140,7 @@ export default {
 	height: 40px;
 	border: none;
 	outline: none;
-	padding-left: 40px;
+    padding: 0 10px;
 	box-sizing: border-box;
 	font-size: 15px;
 	color: #333;
@@ -148,6 +148,14 @@ export default {
 }
 .main input {
     width: 100%;
+}
+.tel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tel input {
+    width: auto;
 }
 .main .mdi {
 	margin-top: 8px;
