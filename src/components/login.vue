@@ -78,10 +78,6 @@ export default {
     background: rgba(0, 0, 0, 0.6);
     top: 0;left: 0;right: 0;bottom: 0;
     z-index: -1;
-    /* background: url('../assets/trinity-college-library.jpg') no-repeat center;
-    background-size: cover;
-    filter: blur(3px);
-    z-index: -1; */
 }
 .container{
 	width: 380px;
@@ -116,7 +112,7 @@ export default {
 	margin-bottom: 25px;
 }
 .main .mdi {
-	margin-top: 17px;
+	margin-top: 8px;
 	font-size: 20px;
 }
 .main button{

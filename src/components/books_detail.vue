@@ -1,14 +1,16 @@
 <template>
 <div class="card">
-  <img :src="livre.couverture" style="width:100%">
-  <h1>{{livre.titre}}</h1>
-  <p class="price">{{livre.prix}}</p>
-  <p>Prix Total : <span>{{total}}</span></p>
-  <p>{{livre.description}}</p>
-  <button v-on:click="diminuer(livre.prix)">-</button>
-  <input v-model ="quantite" type="" name="" placeholder="">
-  <button v-on:click="augmenter(livre.prix)">+</button>
-  <p><button @click="Cart">Cart</button></p>
+  <img :src="livre.couverture">
+  <div class="book-info">
+    <h2>{{livre.titre}}</h2>
+    <p class="price">{{livre.prix}}</p>
+    <p>Prix Total : <span>{{total}}</span></p>
+    <p>{{livre.description}}</p>
+    <button v-on:click="diminuer(livre.prix)">-</button>
+    <input v-model ="quantite" type="" name="" placeholder="">
+    <button v-on:click="augmenter(livre.prix)">+</button>
+    <p><button @click="Cart">Cart</button></p>
+  </div>
 </div>
 </template>
 <script>

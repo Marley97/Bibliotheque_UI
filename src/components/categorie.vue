@@ -3,7 +3,7 @@
     <div v-for = "item in $store.state.categorie" :key="item.id">
         <div><p>{{item.nom}}</p>
             <div class="row">
-                <div class="card"v-for="items in $store.state.livre.filter(x => x.categorie.nom===item.nom)" :key="items.id">
+                <div class="card" v-for="items in $store.state.livre.filter(x => x.categorie.nom===item.nom)" :key="items.id">
                     <img class="card-img" :src="items.couverture">
                     <p class="card-text">{{items.titre}}</p>
                 </div>
@@ -58,6 +58,8 @@ export default {
     
 };
 </script>
-<style>
-    
+<style scoped>
+.row {
+    justify-content: flex-start;
+}
 </style>

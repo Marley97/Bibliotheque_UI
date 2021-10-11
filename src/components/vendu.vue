@@ -20,7 +20,7 @@
                 </td>
                 <td>
                     <span v-on:click="cart.quantite++" class="bt">+</span>
-                    <input v-model = "cart.quantite" type="text">
+                    <input v-model="cart.quantite" type="text">
                     <span v-on:click="cart.quantite--" class="bt">-</span>
                 </td>
                 <td>{{cart.prix}}</td>
@@ -52,6 +52,6 @@ export default {
     },
 }
 </script>
-<style scope src="../assets/table.css">
+<style scoped src="../assets/table.css">
     
 </style>

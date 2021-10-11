@@ -77,7 +77,7 @@ export default {
 	}
 }
 </script>
-<style scope="">
+<style scoped>
 .panier{
 	padding : 10px;
 	width: 30px;

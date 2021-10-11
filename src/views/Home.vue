@@ -25,8 +25,10 @@
         <div class="category">
             <div class="row">
                 <div class="card" v-for = "item in $store.state.livre" :key="item.id" @click="bookroter(item)">
-                    <img class="card-img" :src="item.couverture">
-                    <p class="card-text">{{item.titre}}</p>
+                    <div class="card-inner">
+                        <img class="card-img" :src="item.couverture">
+                        <p class="card-text">{{item.titre}}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -60,4 +62,9 @@ export default {
    },
 }
 </script>
-<style scope=""></style>
+<style scoped>
+.category .row {
+    justify-content: flex-start;
+}
+
+</style>
