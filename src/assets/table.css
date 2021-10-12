@@ -53,3 +53,7 @@ td:last-child, th:last-child{
     margin: 5px;
     cursor: pointer;
 }
+.cart-info{
+    display: flex;
+    flex-wrap: wrap;
+}
