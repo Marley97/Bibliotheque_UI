@@ -17,10 +17,14 @@
 								</router-link>
 								
 							</div>
-							<li v-if="$store.state.user.length!=0"><a @click="logout">logout</a></li>
+							
+							<div v-if="$store.state.user.length!=0">
+								<li style="margin-right: 10px;"><a>{{$store.state.user.first_name}} {{$store.state.user.last_name}}</a></li>
+								<li ><a @click="logout">Logout</a></li>
+							</div>
 							<div v-else>
 								<li style="margin-right: 10px;"><a @click="$router.push('/register')">Register</a></li>
-								<li ><a @click="$router.push('/login')">   Login</a></li>
+								<li ><a @click="$router.push('/login')"> Login</a></li>
 							</div>
 						</div>
 					</div>
@@ -55,7 +59,7 @@ export default {
 	methods:{
 		logout(){
 			localStorage.removeItem("user")
-			this.$store.state.user = null
+			this.$store.state.user = []
 		},
 		rechercher(){
 			axios.get(this.url+'/livre/?titre='+this.search+'',this.headers)
