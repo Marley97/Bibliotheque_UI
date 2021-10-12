@@ -67,7 +67,7 @@ export default {
                 "prix":this.total
             })
 
-                axios.post(this.url+'/http://127.0.0.1:8000/api/panier/',
+                axios.post(this.url+'/panier/',
                         {
                         "client":this.$store.state.user.id,
                         "livres":this.livre,

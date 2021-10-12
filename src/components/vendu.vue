@@ -29,12 +29,8 @@
         <div class="total-price">
             <table>
                 <tr>
-                    <td>Total</td>
-                    <td>125000</td>
-                </tr>
-                <tr>
                     <td>Grand Total</td>
-                    <td>142,000 BIF</td>
+                    <td>{{somme}}</td>
                 </tr>
             </table>
         </div>
@@ -43,13 +39,25 @@
 <script>
 export default {
      data(){
-        return{      
+        return{
+            somme:0      
         }
     },
         mounted(){
+        this.calcultotal()
         console.log(this.$store.state.cart)
+
         
     },
+    methods:{
+        calcultotal(){
+            for (let i=0; i<this.$store.state.cart.length; i++){
+                this.somme+=this.$store.state.cart[i].livres.prix*this.$store.state.cart[i].quantite
+            }
+            console.log(this.somme)
+
+        }
+    }
 }
 </script>
 <style scoped src="../assets/table.css">
