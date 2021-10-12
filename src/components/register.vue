@@ -69,16 +69,26 @@ export default {
     enregistrer(){
         let data = new FormData();
         data.append("username", this.username);
-        data.append("first_name", this.firstname);
-        data.append("last_name", this.lastname);
+        data.append("first_name", this.first_name);
+        data.append("last_name", this.last_name);
         data.append("password",this. password);
         data.append("email", this.email);
           data.append("telephone", this.telephone);
         data.append("adresse", this.adresse);
         axios.post("http://127.0.0.1:8000/api/register/",data)
-        .then((response)=>{
-            console.log(response)
+        .then(()=>{
             alert("success")
+            let data = new FormData();
+            data.append("username", this.username);
+            data.append("password",this. password);
+            axios.post(this.url+"/login/",data)
+            .then((response)=>{
+                this.$store.state.user = response.data
+                this.$router.push('/')
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
         })
         .catch((error)=>{
             console.log(error)
