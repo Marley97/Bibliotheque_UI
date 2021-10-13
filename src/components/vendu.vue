@@ -34,7 +34,7 @@
                     <td>Total</td>
                     <td>{{calcSomme}}</td>
                 </tr>
-                <button class="btn-primary">Payer avec iDenariyo</button>
+                <button @click="payer" class="btn-primary">Payer avec iDenariyo</button>
             </table>
         </div>
     </div>
@@ -53,6 +53,9 @@ export default {
         },
     },
     methods:{
+        payer(){
+            window.location = this.$store.state.url_api+"/transaction/?next="+this.$route.path+'&amount='+this.calcSomme+'&biblio=AZF++'
+        },
         augmenter(cart){
             let index = this.$store.state.cart.indexOf(cart)
             this.$store.state.cart[index].quantite+=1

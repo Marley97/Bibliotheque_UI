@@ -10,7 +10,8 @@ export default new Vuex.Store({
     livre:[],
     cart:[],
     search:"",
-    url: "http://127.0.0.1:8000/api"
+    url: "http://127.0.0.1:8000/api",
+    url_api:"http://localhost:8081"
   },
   mutations: {
   },
