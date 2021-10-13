@@ -60,36 +60,35 @@ export default {
             if(id!=-1){
                 this.$store.state.cart[id].quantite+=this.quantite
             }else{
+            axios.post(this.url+'/panier/',
+                    {
+                    "client":this.$store.state.user.client_id,
+                    "livres":this.livre.id,
+                    "quantite":this.quantite,
+                    "prix":this.total,
+                    "paye":false
+                    }
+                ,this.headers)
+            .then((response)=>{
+                console.log(response.data)
                 this.$store.state.cart.push({
-                "client":this.$store.state.user.id,
-                "livres":this.livre,
-                "quantite":this.quantite,
-                "prix":this.total
+                    "client":this.$store.state.user.client_id,
+                    "livres":this.livre,
+                    "quantite":this.quantite,
+                    "prix":this.total
+                })
+                this.$router.push('/vendu')
             })
-
-                axios.post(this.url+'/http://127.0.0.1:8000/api/panier/',
-                        {
-                        "client":this.$store.state.user.id,
-                        "livres":this.livre,
-                        "quantite":this.quantite,
-                        "prix":this.total,
-                        "paye":false
-                        }
-                    ,this.headers)
-                .then((response)=>{
-                    console.log(success)
-                })
-                .catch((error)=>{
-                    console.log(error)
-                })
-
+            .catch((error)=>{
+                console.log(error)
+                console.log(response.data)
+            })
             }
-            this.$router.push('/vendu')
         }
         }
     }
     
-}
+};
 </script>
 <style scoped src="../assets/card.css"> 
     
