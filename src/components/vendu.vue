@@ -19,7 +19,7 @@
                         </div>
                     </div>
                 </td>
-                <td class="btn" >Valider Quantite</td>
+                <td class="" >Valider Quantite</td>
                 <td>
                     <span v-on:click="augmenter(cart)" class="bt">+</span>
                     <input v-model="cart.quantite" type="text">
@@ -34,6 +34,7 @@
                     <td>Total</td>
                     <td>{{calcSomme}}</td>
                 </tr>
+                <button class="btn-primary">Payer avec iDenariyo</button>
             </table>
         </div>
     </div>
@@ -80,7 +81,5 @@ export default {
 };
 </script>
 <style scoped src="../assets/table.css">
-    .btn{
-        background: orange;
-    }
+
 </style>

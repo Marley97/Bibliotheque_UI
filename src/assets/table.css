@@ -1,6 +1,18 @@
-.small-container {
-    padding: 30px 80px;
+
+.btn-primary {
+    outline: none;
+    width: 100%;
+    min-width: 300px;
+    min-width: 350px;
+    padding: 5px 12px;
+    border: none;
+    font-size: 24px;
+    border-radius: 5px;
+    background: orange;
+    color: white;
 }
+
+
 table{
     width: 100%;
     border-collapse: collapse;
