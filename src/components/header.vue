@@ -11,7 +11,7 @@
 					<div class="right">
 						<div class="cart-logout" v-if="this.$store.state.user">
 							<div style="margin-right: 10px;" class="cart-area">
-								<router-link to="/cart">
+								<router-link to="/vendu">
 									<i class="mdi mdi-cart" ></i>
 									<span class="counter">{{$store.state.cart.length}}</span>
 								</router-link>
@@ -56,10 +56,25 @@ export default {
 			result:null,
 		}
 	},
+	mounted(){
+		this.fetchCart()
+	},
 	methods:{
 		logout(){
 			localStorage.removeItem("user")
 			this.$store.state.user = []
+		},
+		fetchCart(){
+			axios.get(this.url+'/panier/',this.headers)
+			.then((response)=>{
+				this.$store.state.cart=response.data
+			}).catch((error)=>{
+				if(error.response && error.response.status==403){
+					this.refreshToken(this.fetchCart)
+				}else {
+					console.log(error)
+				}
+			})
 		},
 		rechercher(){
 			axios.get(this.url+'/livre/?titre='+this.search+'',this.headers)
@@ -79,7 +94,7 @@ export default {
 			}
 		}
 	}
-}
+};
 </script>
 <style scoped>
 .panier{
