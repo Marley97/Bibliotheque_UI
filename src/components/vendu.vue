@@ -4,6 +4,7 @@
             <tr>
                 <th>Product</th>
                 <th>Quantity</th>
+                <th>Action</th>
                 <th>Total</th>
             </tr>
             <tr v-for =" cart in $store.state.cart" :key = "cart.id">
@@ -18,6 +19,7 @@
                         </div>
                     </div>
                 </td>
+                <td class="btn" >Valider Quantite</td>
                 <td>
                     <span v-on:click="augmenter(cart)" class="bt">+</span>
                     <input v-model="cart.quantite" type="text">
@@ -39,23 +41,18 @@
 <script>
 import axios from 'axios'
 export default {
-     data(){
-        return{ 
-            somme:0, 
-        }
-    },
     computed:{
         calcSomme(){
-            console.log(this.$store.state.cart.length)
+            let somme=0;
+            console.log(this.$store.state.cart)
             for(let i =0;i<this.$store.state.cart.length;i++){
-                this.somme += this.$store.state.cart[i].livres.prix*this.$store.state.cart[i].quantite
+                somme += this.$store.state.cart[i].livres.prix*this.$store.state.cart[i].quantite
             }
-            return this.somme
+            return somme
         },
     },
     methods:{
         augmenter(cart){
-            console.log("clicked")
             let index = this.$store.state.cart.indexOf(cart)
             this.$store.state.cart[index].quantite+=1
             this.$store.state.cart[index].prix+= this.$store.state.cart[index].livres.prix
@@ -65,7 +62,7 @@ export default {
             let quantite = this.$store.state.cart[index].quantite
             if(quantite >1){
                 this.$store.state.cart[index].quantite-=1
-                this.$store.state.cart[index].prix+= this.$store.state.cart[index].livres.prix
+                this.$store.state.cart[index].prix-= this.$store.state.cart[index].livres.prix
             }
         },
         remove(cart){
@@ -83,5 +80,7 @@ export default {
 };
 </script>
 <style scoped src="../assets/table.css">
-    
+    .btn{
+        background: orange;
+    }
 </style>
