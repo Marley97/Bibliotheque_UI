@@ -14,14 +14,14 @@
                             <p class="text">{{cart.livres.titre}}</p>
                             <small class="text">{{cart.livres.prix}}</small>
                             <br>
-                            <a href="">Remove</a>
+                            <a style="cursor:pointer;" @click="remove(cart)">Remove</a>
                         </div>
                     </div>
                 </td>
                 <td>
-                    <span v-on:click="cart.quantite++" class="bt">+</span>
+                    <span v-on:click="augmenter(cart)" class="bt">+</span>
                     <input v-model="cart.quantite" type="text">
-                    <span v-on:click="cart.quantite--" class="bt">-</span>
+                    <span v-on:click="diminuer(cart)" class="bt">-</span>
                 </td>
                 <td>{{cart.prix}}</td>
             </tr>
@@ -30,27 +30,57 @@
             <table>
                 <tr>
                     <td>Total</td>
-                    <td>125000</td>
-                </tr>
-                <tr>
-                    <td>Grand Total</td>
-                    <td>142,000 BIF</td>
+                    <td>{{calcSomme}}</td>
                 </tr>
             </table>
         </div>
     </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
      data(){
-        return{      
+        return{ 
+            somme:0, 
         }
     },
-        mounted(){
-        console.log(this.$store.state.cart)
-        
+    computed:{
+        calcSomme(){
+            console.log(this.$store.state.cart.length)
+            for(let i =0;i<this.$store.state.cart.length;i++){
+                this.somme += this.$store.state.cart[i].livres.prix*this.$store.state.cart[i].quantite
+            }
+            return this.somme
+        },
     },
-}
+    methods:{
+        augmenter(cart){
+            console.log("clicked")
+            let index = this.$store.state.cart.indexOf(cart)
+            this.$store.state.cart[index].quantite+=1
+            this.$store.state.cart[index].prix+= this.$store.state.cart[index].livres.prix
+        },
+        diminuer(cart){
+            let index = this.$store.state.cart.indexOf(cart)
+            let quantite = this.$store.state.cart[index].quantite
+            if(quantite >1){
+                this.$store.state.cart[index].quantite-=1
+                this.$store.state.cart[index].prix+= this.$store.state.cart[index].livres.prix
+            }
+        },
+        remove(cart){
+            console.log(cart)
+            axios.delete(this.url+'/panier/'+cart.id+'/', this.headers)
+            .then((res)=>{
+                let index=this.$store.state.cart.indexOf(cart)
+                this.$store.state.cart.splice(index,1)
+                console.log(res.data)
+            }).catch((error)=>{
+                console.log(error)
+            })
+        }
+    }
+};
 </script>
 <style scoped src="../assets/table.css">
     
