@@ -66,5 +66,7 @@ export default {
 .category .row {
     justify-content: flex-start;
 }
-
+.card {
+    margin-bottom: 16px;
+}
 </style>
